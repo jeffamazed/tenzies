@@ -1,0 +1,226 @@
+*, ::before, ::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #0d1117;
+  --main-background-color: #e2e2e2;
+  --button-color: #2f2fff;
+  --button-color2: #4a4afd;
+  --die-color: white;
+  --die-color2: #e9e9e9;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  background-color: var(--background-color);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 25px;
+}
+
+main {
+  background-color: var(--main-background-color);
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s ease;
+  position: relative;
+}
+
+.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.instruction-container {
+  font-size: 1.7rem;
+  text-align: center;
+  padding: 30px 30px 0;
+  font-weight: 300;
+}
+
+.instruction-container > h1 {
+  margin-bottom: 10px;
+}
+
+.dice-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 30px;
+  gap: 30px;
+  justify-content: center;
+}
+
+.die {
+  height: 65px;
+  width: 65px;
+  font-size: 85px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 3px 2px #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.die:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fas.fa-dice-one,
+.fas.fa-dice-two,
+.fas.fa-dice-three,
+.fas.fa-dice-four,
+.fas.fa-dice-five,
+.fas.fa-dice-six {
+  color: white; 
+  background-color: black;
+  transition: color 0.15s ease;
+}
+
+.fas.fa-dice-one:hover,
+.fas.fa-dice-two:hover,
+.fas.fa-dice-three:hover,
+.fas.fa-dice-four:hover,
+.fas.fa-dice-five:hover,
+.fas.fa-dice-six:hover {
+  color: var(--die-color2);
+}
+
+.die.rolling {
+  transform: rotateY(360deg);
+  opacity: 0.5;
+}
+
+.die:hover {
+  background-color: var(--die-color2);
+}
+
+.die:focus {
+  outline: none;
+  border: 2px solid #353535;
+}
+
+.roll-btn {
+  font-size: 2.5rem;
+  padding: 8px 30px;
+  font-family: Karla, sans-serif;
+  border: none;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  margin:10px 0 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  box-shadow: 0 3px 2px 1px #000069c2;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.roll-btn:hover {
+  background-color: var(--button-color2);
+}
+
+.roll-btn:focus {
+  outline: none;
+  box-shadow: 0 1px 0px 2px #000025e8;
+}
+
+.roll-btn:active {
+  transform: scale(0.98);
+}
+
+.sfx-btn {
+  font-size: 1.3rem;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.sfx-btn:focus {
+  outline: 2px solid #303030;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media only screen and (min-width: 501px) {
+  main {
+    max-width: 500px;
+  }
+  
+  .dice-container {
+    gap: 35px;
+  }
+
+  .die {
+    height: 70px;
+    width: 70px;
+    font-size: 90px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  main {
+    max-width: 600px;
+  }
+
+  .dice-container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .roll-btn {
+    font-size: 3rem;
+    margin:30px 0 60px;
+  }
+
+  .instruction-container {
+    font-size: 2rem;
+    padding: 40px 40px 10px;
+  }
+
+  .sfx-btn {
+    font-size: 1.5rem;
+  }
+}
+
